@@ -1,0 +1,12 @@
+name: Build Executable
+on: push
+
+jobs: 
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      -name: Build C++ executables
+      uses: action/checkout@v1
+      run: ./build.sh   
+      shell: bash  
