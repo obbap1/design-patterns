@@ -1,0 +1,19 @@
+name: Build Executable
+on: push
+
+jobs: 
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build C++ executables
+        uses: action/checkout@v1
+        run: |
+          FILES="./patterns/*.cpp" \
+          for f in $FILES \
+              do \
+                  echo "Building file..........." \
+                  $eval("g++ $f -o ${f%%.*}.out") \
+                  echo "Done processing $f" \
+              done 
+        shell: bash  
